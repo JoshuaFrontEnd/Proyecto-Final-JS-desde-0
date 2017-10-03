@@ -32,7 +32,7 @@ gulp.task('sass', () =>
 
 gulp.task('pug', () =>
   gulp.src('./dev/pug/*.pug')
-    .pipe(pug())
+    .pipe(pug({ pretty: true }))
     .pipe(gulp.dest('./public'))
 );
 

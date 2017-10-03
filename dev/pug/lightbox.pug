@@ -1,3 +1,9 @@
 extends templates/template
 block main
 	h1 Lightbox Gallery
+	-var n = 1
+	while n <= 12
+		.gallery-container
+			.gallery-item
+				img(src="img/gallery-" + n + "-thumb.jpg" alt="Descripcion de la imagen" + n)
+		-n++
