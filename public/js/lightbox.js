@@ -43,6 +43,7 @@ var openLightbox = function openLightbox(gallery, i, larges, descriptions) {
 	lightboxElement.id = 'lightbox';
 	document.body.appendChild(lightboxElement);
 	closeModal(lightboxElement);
+	navigateLightbox(lightboxElement, i, larges, descriptions);
 };
 
 // Cerrar modal
@@ -51,6 +52,40 @@ var closeModal = function closeModal(modalElement) {
 	closeModal.addEventListener('click', function (e) {
 		e.preventDefault();
 		document.body.removeChild(modalElement);
+	});
+};
+
+// Navegar por el lightbox
+var navigateLightbox = function navigateLightbox(lightboxElement, i, larges, descriptions) {
+	var prevButton = lightboxElement.querySelector('.prev'),
+	    nextButton = lightboxElement.querySelector('.next'),
+	    image = lightboxElement.querySelector('img'),
+	    description = lightboxElement.querySelector('p'),
+	    counter = lightboxElement.querySelector('span');
+
+	lightboxElement.addEventListener('click', function (e) {
+		e.preventDefault();
+		var target = e.target;
+		if (target === prevButton) {
+			if (i > 0) {
+				image.src = larges[i - 1];
+				i--;
+			} else {
+				image.src = larges[larges.length - 1];
+				i = larges.length - 1;
+			}
+		} else if (target === nextButton) {
+			if (i < larges.length - 1) {
+				image.src = larges[i + 1];
+				i++;
+			} else {
+				image.src = larges[0];
+				i = 0;
+			}
+		}
+
+		description.textContent = descriptions[i];
+		counter.textContent = 'Imagen ' + (i + 1) + ' de ' + larges.length;
 	});
 };
 
