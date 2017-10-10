@@ -39,9 +39,19 @@ var openLightboxEvent = function openLightboxEvent(container, gallery, larges, d
 // Imprimir overlay del lightbox en el body
 var openLightbox = function openLightbox(gallery, i, larges, descriptions) {
 	var lightboxElement = document.createElement('div');
-	lightboxElement.innerHTML = '\n\t\t<div class="lightbox-overlay">\n\t\t\t<figure class="lightbox-container">\n\t\t\t\t<img src="' + larges[i] + '" class="lightbox-image">\n\t\t\t\t<figcaption>\n\t\t\t\t\t<p class="lightbox-description">' + descriptions[i] + '</p>\n\t\t\t\t\t<nav class="lightbox-navigation">\n\t\t\t\t\t\t<a href="#" class="lightbox-navigation__button prev"></a>\n\t\t\t\t\t\t<span class="lightbox-navigation__counter">Imagen ' + (i + 1) + ' de ' + gallery.length + '</span>\n\t\t\t\t\t\t<a href="#" class="lightbox-navigation__button next"></a>\n\t\t\t\t\t</nav>\n\t\t\t\t</figcaption>\n\t\t\t </figure>\n\t\t</div>\n\t';
+	lightboxElement.innerHTML = '\n\t\t<div class="lightbox-overlay">\n\t\t\t<figure class="lightbox-container">\n\t\t\t\t<div class="close-modal">\u2716</div>\n\t\t\t\t<img src="' + larges[i] + '" class="lightbox-image">\n\t\t\t\t<figcaption>\n\t\t\t\t\t<p class="lightbox-description">' + descriptions[i] + '</p>\n\t\t\t\t\t<nav class="lightbox-navigation">\n\t\t\t\t\t\t<a href="#" class="lightbox-navigation__button prev">\u25C0</a>\n\t\t\t\t\t\t<span class="lightbox-navigation__counter">Imagen ' + (i + 1) + ' de ' + gallery.length + '</span>\n\t\t\t\t\t\t<a href="#" class="lightbox-navigation__button next">\u25B6</a>\n\t\t\t\t\t</nav>\n\t\t\t\t</figcaption>\n\t\t\t </figure>\n\t\t</div>\n\t';
 	lightboxElement.id = 'lightbox';
 	document.body.appendChild(lightboxElement);
+	closeModal(lightboxElement);
+};
+
+// Cerrar modal
+var closeModal = function closeModal(modalElement) {
+	var closeModal = modalElement.querySelector('.close-modal');
+	closeModal.addEventListener('click', function (e) {
+		e.preventDefault();
+		document.body.removeChild(modalElement);
+	});
 };
 
 var lightbox = function lightbox(container) {
