@@ -1,10 +1,10 @@
 extends templates/template
 block main
 	h1 Lightbox Gallery
-	.gallery-container
+	.gallery-container#gallery-container
 		- let n = 1
 		while n <= 12
 			.gallery-item
-				img(src="img/gallery-" + n + "-thumb.jpg" alt="Descripcion de la imagen" + n)
+				img(src="img/gallery-" + n + "-thumb.jpg" alt="Descripcion de la imagen " + n)
 			-n++
 	script(src="js/lightbox.js")
