@@ -61,7 +61,15 @@ var navigateLightbox = function navigateLightbox(lightboxElement, i, larges, des
 	    nextButton = lightboxElement.querySelector('.next'),
 	    image = lightboxElement.querySelector('img'),
 	    description = lightboxElement.querySelector('p'),
-	    counter = lightboxElement.querySelector('span');
+	    counter = lightboxElement.querySelector('span'),
+	    closeButton = lightboxElement.querySelector('.close-modal');
+
+	window.addEventListener('keyup', function (e) {
+		//Este click simula un mouse click (HTMLElement.click())
+		if (e.key === 'ArrowRight') nextButton.click();
+		if (e.key === 'ArrowLeft') prevButton.click();
+		if (e.key === 'Escape') closeButton.click();
+	});
 
 	lightboxElement.addEventListener('click', function (e) {
 		e.preventDefault();
