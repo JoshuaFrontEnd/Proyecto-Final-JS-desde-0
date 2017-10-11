@@ -97,10 +97,3 @@ var lightbox = function lightbox(container) {
 };
 
 lightbox(document.getElementById('gallery-container'));
-
-// Se abre un "overlay"
-// Ese "overlay" debe poder cerrarse
-
-// Al abrirse la version grande debe tener lo siguiente
-// Descripcion de la imagen (que se tomara del atributo alt)
-// Navegacion entre la imagen siguiente y la anterior
